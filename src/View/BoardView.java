@@ -7,7 +7,7 @@ public class BoardView extends JFrame {
 
     //Komponenten
     JFrame jfr;             //Basisfenster
-
+    Container contentPane;
     JPanel startScreen;     //JPanel in dem der Startscreen angezeigt wird
     JButton startGame;      //Button, der das Spiel startet
     JButton endGame;        //Button, der das Spiel beendet
@@ -21,9 +21,11 @@ public class BoardView extends JFrame {
         jfr = new JFrame();
         jfr.setTitle("Minesweeper");
         jfr.setSize(board_width,board_height);
-        jfr.setResizable(false);
+        jfr.setResizable(true);
         jfr.setLocationRelativeTo(null);
         jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        contentPane = jfr.getContentPane();
+        contentPane.setLayout(new BorderLayout());
 
         jfr.setVisible(true);
 
@@ -48,6 +50,8 @@ public class BoardView extends JFrame {
 
     //Buttonreaktion
     public JButton getStartButton(){
+
         return this.startGame;
     }
+
 }
