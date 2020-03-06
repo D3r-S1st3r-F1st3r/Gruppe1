@@ -23,6 +23,7 @@ public class Controller implements ActionListener {
         if(e.getSource() == boardView.getStartButton()){
 
             boardView.closeStartScreen();
+
         }
     }
 }
