@@ -11,23 +11,22 @@ public class BoardView extends JFrame {
     Controller controller;
 
     //Komponenten
-    JFrame jfr;             //Basisfenster
-    Container contentPane;
-    JPanel startScreen;     //JPanel in dem der Startscreen angezeigt wird
-    JButton startGame;      //Button, der das Spiel startet
-    JButton endGame;        //Button, der das Spiel beendet
+    private JFrame jfr;             //Basisfenster
+    private Container contentPane;
 
-    JPanel gameScreen;      //JPanel in dem das Spielfeld angezeigt wird
+    private JPanel gameScreen;      //JPanel in dem das Spielfeld angezeigt wird
 
     private int board_width = 800;
     private int board_height = 800;
 
     public BoardView(Controller controller){
-        this.controller = controller;
+           this.controller = controller;
+    }
 
+    public void initGui(){
         jfr = new JFrame();
-        jfr.setTitle("Minesweeper");
-        jfr.setSize(board_width,board_height);
+        jfr.setTitle("Minesweeper - Game Window");
+        jfr.setSize(board_width, board_height);
         jfr.setResizable(true);
         jfr.setLocationRelativeTo(null);
         jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,33 +34,13 @@ public class BoardView extends JFrame {
         contentPane.setLayout(new BorderLayout());
 
         jfr.setVisible(true);
-
-        initStartScreen();
     }
 
-    //Start Screen wird initialisiert
-    public void initStartScreen(){
-        startScreen = new JPanel();                 //Panel wird erstellt
-        startGame = new JButton("Spiel starten");      //Button wird erstellt und in das Panel eingefügt
-        startGame.addActionListener(controller);
-
-        startScreen.add(startGame);
-        contentPane.add(startScreen);
+    public int getWidth(){
+        return this.board_width;
     }
 
-    public void closeStartScreen(){
-        contentPane.remove(startScreen);
+    public int getHeight(){
+        return this.board_height;
     }
-
-    //Spiel wird im Fenster angezeigt
-    public void addGameScreen(){
-        contentPane.add(gameScreen);
-    }
-
-    //Buttonreaktion
-    public JButton getStartButton(){
-
-        return this.startGame;
-    }
-
 }
