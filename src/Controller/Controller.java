@@ -11,15 +11,15 @@ public class Controller implements MouseListener {
     private BoardView boardView;
     private Model model;
 
-    public Controller(BoardView boardView){
-        this.boardView = boardView;
+    public Controller(){
+        this.boardView = new BoardView();
         this.model = new Model();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         //Aktion nachdem das Spiel durch den "Start" Button gestartet wird
-        if(e.getButton() == this.boardView.startGame){
+        if(e.getSource() == this.boardView.getStartButton()){
 
         }
     }
