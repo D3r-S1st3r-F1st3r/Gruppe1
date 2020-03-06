@@ -27,10 +27,12 @@ public class BoardView extends JFrame {
 
         //Fenster werden erstmal erstellt
         initStartScreen();
+        addStartScreen();
         initGame();
 
     }
 
+    //Start Screen wird initialisiert
     public void initStartScreen(){
         startScreen = new JPanel();                 //Panel wird erstellt
 
@@ -38,6 +40,7 @@ public class BoardView extends JFrame {
         startScreen.add(startGame);
     }
 
+    //Game Screen wird initialisiert
     public void initGame(){
         gameScreen = new JPanel();
     }
