@@ -1,9 +1,14 @@
 package View;
 
+import Controller.Controller;
+
+import javax.sound.midi.ControllerEventListener;
 import javax.swing.*;
 import java.awt.*;
 
 public class BoardView extends JFrame {
+
+    Controller controller;
 
     //Komponenten
     JFrame jfr;             //Basisfenster
@@ -17,7 +22,9 @@ public class BoardView extends JFrame {
     private int board_width = 800;
     private int board_height = 800;
 
-    public BoardView(){
+    public BoardView(Controller controller){
+        this.controller = controller;
+
         jfr = new JFrame();
         jfr.setTitle("Minesweeper");
         jfr.setSize(board_width,board_height);
@@ -36,16 +43,19 @@ public class BoardView extends JFrame {
     public void initStartScreen(){
         startScreen = new JPanel();                 //Panel wird erstellt
         startGame = new JButton("Spiel starten");      //Button wird erstellt und in das Panel eingefügt
+        startGame.addActionListener(controller);
 
         startScreen.add(startGame);
-        jfr.add(startScreen);
+        contentPane.add(startScreen);
     }
 
+    public void closeStartScreen(){
+        contentPane.remove(startScreen);
+    }
 
     //Spiel wird im Fenster angezeigt
     public void addGameScreen(){
-        jfr.remove(startScreen);
-        jfr.add(gameScreen);
+        contentPane.add(gameScreen);
     }
 
     //Buttonreaktion
