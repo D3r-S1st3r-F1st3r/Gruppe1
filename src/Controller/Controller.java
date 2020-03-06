@@ -18,7 +18,10 @@ public class Controller implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        //Aktion nachdem das Spiel durch den "Start" Button gestartet wird
+        if(e.getButton() == this.boardView.startGame){
 
+        }
     }
 
     @Override
