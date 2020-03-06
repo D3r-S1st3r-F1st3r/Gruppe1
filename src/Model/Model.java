@@ -2,6 +2,8 @@ package Model;
 
 import View.BoardView;
 
+import javax.swing.*;
+
 public class Model {
 
     BoardView boardView;
@@ -9,18 +11,13 @@ public class Model {
     //different counter
     private int minesLeft;
     private int secounds;
-    private int minesCount;
     private int flagCount;
 
+    //Anzahl der Minen
+    private int minenAnzahl = 50;
+
     //field size
-    private int zellenHeight;
-    private int zellenWidth;
-
-    //game board size
-    private int board_width = boardView.getWidth();
-    private int board_height = boardView.getHeight();
-
-    //components
-
+    private int xFields = 16;
+    private int yFields = 16;
 
 }

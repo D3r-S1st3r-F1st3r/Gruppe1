@@ -32,7 +32,6 @@ public class BoardView extends JFrame {
         jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         contentPane = jfr.getContentPane();
         contentPane.setLayout(new BorderLayout());
-
         jfr.setVisible(true);
     }
 

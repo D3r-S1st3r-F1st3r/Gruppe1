@@ -24,8 +24,6 @@ public class Controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == startscreenview.getStartButton()){
-            System.out.println("ljsdlfjklsdajf");
-
             startscreenview.setVisible(false);
             boardView.initGui();
         }
