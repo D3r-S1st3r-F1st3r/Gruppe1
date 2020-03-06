@@ -22,33 +22,23 @@ public class BoardView extends JFrame {
         jfr.setTitle("Minesweeper");
         jfr.setSize(board_width,board_height);
         jfr.setResizable(false);
+        jfr.setLocationRelativeTo(null);
         jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         jfr.setVisible(true);
 
-        //Fenster werden erstmal erstellt
         initStartScreen();
-        addStartScreen();
-        initGame();
-
     }
 
     //Start Screen wird initialisiert
     public void initStartScreen(){
         startScreen = new JPanel();                 //Panel wird erstellt
-
         startGame = new JButton("Spiel starten");      //Button wird erstellt und in das Panel eingefügt
+
         startScreen.add(startGame);
-    }
-
-    //Game Screen wird initialisiert
-    public void initGame(){
-        gameScreen = new JPanel();
-    }
-
-    //Startscreen wird im Fenster angezeigt
-    public void addStartScreen(){
         jfr.add(startScreen);
     }
+
 
     //Spiel wird im Fenster angezeigt
     public void addGameScreen(){

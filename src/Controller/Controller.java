@@ -20,7 +20,7 @@ public class Controller implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         //Aktion nachdem das Spiel durch den "Start" Button gestartet wird
         if(e.getSource() == this.boardView.getStartButton()){
-            boardView.initGame();
+
         }
     }
 
