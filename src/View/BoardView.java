@@ -42,5 +42,4 @@ public class BoardView extends JFrame {
         return this.board_height;
     }
 
-
 }
