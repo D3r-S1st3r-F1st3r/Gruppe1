@@ -22,4 +22,8 @@ public class FieldModel {
     public void setValue(int value){
         this.value = value;
     }
+
+    public boolean getBombActive(){
+        return this.bomb;
+    }
 }

@@ -27,8 +27,11 @@ public class Model {
                 fieldModel = new FieldModel[i][j];
             }
         }
+
+        setBombs();
     }
 
+    //setzt automatisch zufüllig Bomben im [][] Array
     public void setBombs(){
 
         for(int i = 0; i < minenAnzahl; i++){
@@ -36,8 +39,29 @@ public class Model {
             int zahl2 = randomizer.nextInt(15);
 
             fieldModel[zahl1][zahl2].setBombActive();
-
         }
     }
 
+    public boolean checkBomb(int i, int j){
+        //Wenn Bombe auf dem Feld liegt
+        if(fieldModel[i][j].getBombActive() == true){
+            return true;
+
+            //Wenn keine Bombe auf dem Feld liegt
+        }else{
+            setDisabledButton(i,j);
+            return false;
+        }
+    }
+
+    //Aktion, wenn Button gedrückt wurde
+    public void setDisabledButton(int i, int j){
+            fieldModel[i][j].setFlag(false);
+            fieldModel[i][j].setShownActive();
+    }
+
+    //Aktion wenn Flagge gesetzt/entfernt wird
+    public void setFlag(int i, int j, boolean wert){
+        fieldModel[i][j].setFlag(wert);
+    }
 }

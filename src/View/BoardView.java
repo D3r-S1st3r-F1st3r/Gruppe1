@@ -57,9 +57,9 @@ public class BoardView extends JFrame {
         for(int i = 0; i < 16; i++){
             for(int j = 0; j < 16; j++){
                 spielfeldButtons[i][j] = new JButton();
+                spielfeldButtons[i][j].addMouseListener(controller);
                 spielfeld.add(spielfeldButtons[i][j]);
             }
         }
-
     }
 }
