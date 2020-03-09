@@ -44,7 +44,7 @@ public class StartScreenView extends JFrame {
     public void initStartScreen(){
         startScreen = new JPanel();
 
-       startGame = new JButton("");
+       startGame = new JButton("Spiel starten");
 
         startGame.addActionListener(controller);
 

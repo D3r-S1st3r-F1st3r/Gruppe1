@@ -12,6 +12,8 @@ public class BoardView extends JFrame {
     //Komponenten
     private JFrame jfr;             //Basisfenster
     private Container contentPane;
+    private JPanel spielfeld;
+    private JButton[][] spielfeldButtons = new JButton[16][16];
 
     private JPanel gameScreen;      //JPanel in dem das Spielfeld angezeigt wird
 
@@ -32,6 +34,13 @@ public class BoardView extends JFrame {
         contentPane = jfr.getContentPane();
         contentPane.setLayout(new BorderLayout());
         jfr.setVisible(true);
+
+
+        spielfeld = new JPanel();
+        spielfeld.setLayout(new GridLayout(16,16));
+        contentPane.add(spielfeld);
+
+        initSpielfeld();
     }
 
     public int getWidth(){
@@ -42,4 +51,11 @@ public class BoardView extends JFrame {
         return this.board_height;
     }
 
+    public void initSpielfeld(){
+        for(int i = 0; i < 16; i++){
+            for(int j = 0; j < 16; j++){
+                spielfeld.add(new JButton());
+            }
+        }
+    }
 }
