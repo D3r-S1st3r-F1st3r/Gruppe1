@@ -38,6 +38,7 @@ public class BoardView extends JFrame {
 
         spielfeld = new JPanel();
         spielfeld.setLayout(new GridLayout(16,16));
+
         contentPane.add(spielfeld);
 
         initSpielfeld();
@@ -52,10 +53,13 @@ public class BoardView extends JFrame {
     }
 
     public void initSpielfeld(){
+
         for(int i = 0; i < 16; i++){
             for(int j = 0; j < 16; j++){
-                spielfeld.add(new JButton());
+                spielfeldButtons[i][j] = new JButton();
+                spielfeld.add(spielfeldButtons[i][j]);
             }
         }
+
     }
 }

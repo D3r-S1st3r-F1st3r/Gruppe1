@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, MouseListener {
 
     private StartScreenView startscreenview;
     private BoardView boardView;
@@ -27,5 +27,30 @@ public class Controller implements ActionListener {
             startscreenview.setVisible(false);
             boardView.initGui();
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
