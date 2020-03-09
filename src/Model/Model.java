@@ -16,8 +16,4 @@ public class Model {
     //Anzahl der Minen
     private int minenAnzahl = 50;
 
-    //field size
-    private int xFields = 16;
-    private int yFields = 16;
-
 }

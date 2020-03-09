@@ -2,7 +2,6 @@ package View;
 
 import Controller.Controller;
 
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.*;
 import java.awt.*;
 
@@ -42,4 +41,6 @@ public class BoardView extends JFrame {
     public int getHeight(){
         return this.board_height;
     }
+
+
 }
