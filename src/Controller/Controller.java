@@ -4,6 +4,7 @@ import Model.Model;
 import View.BoardView;
 import View.StartScreenView;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -36,7 +37,8 @@ public class Controller implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+      JButton button = (JButton) e.getSource();
+      System.out.println(button.getX());
     }
 
     @Override
