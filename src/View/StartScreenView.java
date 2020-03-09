@@ -16,6 +16,7 @@ public class StartScreenView extends JFrame {
     private JFrame jfr;             //Basisfenster
     private Container contentPane;
     private JPanel startScreen;     //JPanel in dem der Startscreen angezeigt wird
+
     private JButton startGame;
 
     private int board_width = 800;
@@ -32,7 +33,7 @@ public class StartScreenView extends JFrame {
         jfr.setLocationRelativeTo(null);
         jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         contentPane = jfr.getContentPane();
-        contentPane.setLayout(new BorderLayout());
+        contentPane.setLayout(new GridLayout());
 
         jfr.setVisible(true);
 
@@ -42,7 +43,8 @@ public class StartScreenView extends JFrame {
     //Startscreen wird erstellt
     public void initStartScreen(){
         startScreen = new JPanel();
-        startGame = new JButton("Spiel starten");
+
+       startGame = new JButton("");
 
         startGame.addActionListener(controller);
 
