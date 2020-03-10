@@ -2,7 +2,6 @@ package Model;
 
 import View.BoardView;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class Model {
@@ -42,16 +41,8 @@ public class Model {
         }
     }
 
-    public boolean checkBomb(int i, int j){
-        //Wenn Bombe auf dem Feld liegt
-        if(fieldModel[i][j].getBombActive() == true){
-            return true;
-
-            //Wenn keine Bombe auf dem Feld liegt
-        }else{
-            setDisabledButton(i,j);
-            return false;
-        }
+    public void checkBomb(int i, int j){
+        System.out.println(fieldModel[i][j].getBombActive());
     }
 
     //Aktion, wenn Button gedrückt wurde

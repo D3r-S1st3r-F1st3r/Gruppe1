@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Model;
 import View.BoardView;
+import View.ButtonView;
 import View.StartScreenView;
 
 import javax.swing.*;
@@ -37,8 +38,12 @@ public class Controller implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-      JButton button = (JButton) e.getSource();
-      System.out.println(button.getX());
+      ButtonView button = (ButtonView) e.getSource();
+
+      //System.out.println(button.getXKor()+ " - " +button.getYKor());
+      int zahl1 = button.getXKor();
+      int zahl2 = button.getYKor();
+      model.checkBomb(zahl1, zahl2);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class FieldModel {
     }
 
     public boolean getBombActive(){
+
         return this.bomb;
     }
 }
