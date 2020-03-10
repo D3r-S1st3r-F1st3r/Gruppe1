@@ -29,7 +29,12 @@ public class Controller implements ActionListener, MouseListener {
             startscreenview.setVisible(false);
             boardView.initGui();
 
+            //Feld wird im Model erstellt
             model.initFields();
+
+            //Bomben werden im Model gesetzt
+            model.setBombs();
+
         }
     }
 
@@ -43,16 +48,24 @@ public class Controller implements ActionListener, MouseListener {
       ButtonView button = (ButtonView) e.getSource();
 
       //System.out.println(button.getXKor()+ " - " +button.getYKor());
-      int zahl1 = button.getXKor();
-      int zahl2 = button.getYKor();
+      int zahl1 = button.getYKor();
+      int zahl2 = button.getXKor();
+      System.out.println(zahl1+ "- " +zahl2);
 
-      //Wenn auf dem Feld eine Bombe = Spiel verloren
-      if(model.checkBomb(zahl1, zahl2) == true){
-          gameLoseAction();
-      }else{
-          System.out.println("Glück gehabt");
+      //Bei einem Click auf die RECHTE Maustaste -> Flagge platzieren
+      if(SwingUtilities.isRightMouseButton(e)){
+          model.setFlag(zahl1, zahl2);
       }
 
+      //Bei einem Click auf die LINKE Maustaste -> Feld aufdecken
+      if(SwingUtilities.isLeftMouseButton(e)){
+          //Wenn auf dem Feld eine Bombe = Spiel verloren
+          if(model.checkBomb(zahl1, zahl2) == true){
+              gameLoseAction();
+          }else{
+              boardView.setButtonEnabled(zahl1, zahl2);
+          }
+      }
     }
 
     @Override
@@ -72,6 +85,6 @@ public class Controller implements ActionListener, MouseListener {
 
 
     public void gameLoseAction(){
-
+        System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
     }
 }

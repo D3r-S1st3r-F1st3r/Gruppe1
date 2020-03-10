@@ -28,6 +28,9 @@ public class FieldModel {
         this.flag = wert;
     }
 
+    public boolean getFlag(){
+        return this.flag;
+    }
 
     public void setValue(int value){
 

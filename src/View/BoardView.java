@@ -65,7 +65,11 @@ public class BoardView extends JFrame {
         }
     }
 
-    public void setButtonEnabled(){
+    public void setButtonEnabled(int zahl1, int zahl2){
+        spielfeldButtons[zahl1][zahl2].setEnabled(false);
+    }
+
+    public void setFlag(){
 
     }
 }

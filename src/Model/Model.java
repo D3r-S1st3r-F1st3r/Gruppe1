@@ -40,7 +40,12 @@ public class Model {
     }
 
     public boolean checkBomb(int i, int j){
-        return false;
+        if(fieldModel[i][j].getBombActive() == true){
+            return true;
+        }else{
+            setDisabledButton(i,j);
+            return false;
+        }
     }
 
     //Aktion, wenn Button gedrückt wurde
@@ -50,7 +55,11 @@ public class Model {
     }
 
     //Aktion wenn Flagge gesetzt/entfernt wird
-    public void setFlag(int i, int j, boolean wert){
-        fieldModel[i][j].setFlag(wert);
+    public void setFlag(int i, int j){
+        if(fieldModel[i][j].getFlag() == true){
+            fieldModel[i][j].setFlag(true);
+        }else{
+            fieldModel[i][j].setFlag(false);
+        }
     }
 }
