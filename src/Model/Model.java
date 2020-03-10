@@ -57,9 +57,14 @@ public class Model {
     //Aktion wenn Flagge gesetzt/entfernt wird
     public void setFlag(int i, int j){
         if(fieldModel[i][j].getFlag() == true){
-            fieldModel[i][j].setFlag(true);
-        }else{
             fieldModel[i][j].setFlag(false);
+        }else{
+            fieldModel[i][j].setFlag(true);
         }
     }
+
+    public boolean getFlagStatus(int i, int j){
+        return fieldModel[i][j].getFlag();
+    }
+
 }

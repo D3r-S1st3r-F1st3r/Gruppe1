@@ -50,11 +50,16 @@ public class Controller implements ActionListener, MouseListener {
       //System.out.println(button.getXKor()+ " - " +button.getYKor());
       int zahl1 = button.getYKor();
       int zahl2 = button.getXKor();
-      System.out.println(zahl1+ "- " +zahl2);
 
       //Bei einem Click auf die RECHTE Maustaste -> Flagge platzieren
       if(SwingUtilities.isRightMouseButton(e)){
-          model.setFlag(zahl1, zahl2);
+          if(model.getFlagStatus(zahl1, zahl2) == false){
+              boardView.setFlag(zahl1, zahl2);
+              model.setFlag(zahl1,zahl2);
+          }else{
+              model.setFlag(zahl1,zahl2);
+              boardView.deleteFlag(zahl1,zahl2);
+          }
       }
 
       //Bei einem Click auf die LINKE Maustaste -> Feld aufdecken

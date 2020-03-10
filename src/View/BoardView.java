@@ -69,7 +69,14 @@ public class BoardView extends JFrame {
         spielfeldButtons[zahl1][zahl2].setEnabled(false);
     }
 
-    public void setFlag(){
-
+    //Flagge wird in der View gesetzt
+    public void setFlag(int zahl1, int zahl2){
+        spielfeldButtons[zahl1][zahl2].setText("F");
     }
+
+    //Flagge wird in der View gelöscht
+    public void deleteFlag(int zahl1, int zahl2){
+        spielfeldButtons[zahl1][zahl2].setText("");
+    }
+
 }
