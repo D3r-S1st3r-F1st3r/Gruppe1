@@ -30,7 +30,6 @@ public class Controller implements ActionListener, MouseListener {
             boardView.initGui();
 
             model.initFields();
-
         }
     }
 
@@ -47,8 +46,13 @@ public class Controller implements ActionListener, MouseListener {
       int zahl1 = button.getXKor();
       int zahl2 = button.getYKor();
 
+      //Wenn auf dem Feld eine Bombe = Spiel verloren
+      if(model.checkBomb(zahl1, zahl2) == true){
+          gameLoseAction();
+      }else{
+          System.out.println("Glück gehabt");
+      }
 
-      model.checkBomb(zahl1, zahl2);
     }
 
     @Override
@@ -63,6 +67,11 @@ public class Controller implements ActionListener, MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+
+    public void gameLoseAction(){
 
     }
 }

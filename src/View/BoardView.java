@@ -64,4 +64,8 @@ public class BoardView extends JFrame {
             }
         }
     }
+
+    public void setButtonEnabled(){
+
+    }
 }

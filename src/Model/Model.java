@@ -39,8 +39,8 @@ public class Model {
         }
     }
 
-    public void checkBomb(int i, int j){
-        System.out.println(fieldModel[i][j].getBombActive());
+    public boolean checkBomb(int i, int j){
+        return false;
     }
 
     //Aktion, wenn Button gedrückt wurde
