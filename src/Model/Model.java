@@ -2,12 +2,13 @@ package Model;
 
 import View.BoardView;
 
+import java.util.List;
 import java.util.Random;
 
 public class Model {
 
     BoardView boardView;
-    FieldModel[][] fieldModel;
+    FieldModel[][] fieldModel = new FieldModel[15][15];
 
     //random generator
     Random randomizer = new Random();
@@ -19,15 +20,12 @@ public class Model {
     //Anzahl der Minen
     private int minenAnzahl = 25;
 
-
     public void initFields(){
-        for(int i = 0; i < 16; i++){
-            for (int j = 0; j < 16; j++){
-                fieldModel = new FieldModel[i][j];
+        for(int i = 0; i < 15; i++){
+            for (int j = 0; j < 15; j++){
+                fieldModel[i][j] = new FieldModel();
             }
         }
-
-        setBombs();
     }
 
     //setzt automatisch zufüllig Bomben im [][] Array

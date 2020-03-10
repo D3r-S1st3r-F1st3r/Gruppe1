@@ -28,6 +28,9 @@ public class Controller implements ActionListener, MouseListener {
         if(e.getSource() == startscreenview.getStartButton()){
             startscreenview.setVisible(false);
             boardView.initGui();
+
+            model.initFields();
+
         }
     }
 
@@ -43,6 +46,8 @@ public class Controller implements ActionListener, MouseListener {
       //System.out.println(button.getXKor()+ " - " +button.getYKor());
       int zahl1 = button.getXKor();
       int zahl2 = button.getYKor();
+
+
       model.checkBomb(zahl1, zahl2);
     }
 
