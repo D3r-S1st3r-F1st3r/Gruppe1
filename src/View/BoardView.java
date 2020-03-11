@@ -3,6 +3,7 @@ package View;
 import Controller.Controller;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class BoardView extends JFrame {
@@ -13,15 +14,23 @@ public class BoardView extends JFrame {
     private JFrame jfr;             //Basisfenster
     private Container contentPane;
     private JPanel spielfeld;
-    private JButton[][] spielfeldButtons = new JButton[16][16];
 
-    private JPanel gameScreen;      //JPanel in dem das Spielfeld angezeigt wird
+    //Anzeige
+    private JPanel anzeige;
+    private JLabel minesLeftLabel;
+    private JTextField minesLeftField;
+    private JPanel left;
+    private JPanel center;
+    private JPanel right;
+
+    private JButton[][] spielfeldButtons = new JButton[16][16];
 
     private int board_width = 800;
     private int board_height = 800;
 
     public BoardView(Controller controller){
-           this.controller = controller;
+
+        this.controller = controller;
     }
 
     public void initGui(){
@@ -35,13 +44,16 @@ public class BoardView extends JFrame {
         contentPane.setLayout(new BorderLayout());
         jfr.setVisible(true);
 
+        //Anzeige
+        anzeige = new JPanel();
+        anzeige.setLayout(new BorderLayout());
 
+        //Spielfeld
         spielfeld = new JPanel();
         spielfeld.setLayout(new GridLayout(16,16));
 
-        contentPane.add(spielfeld);
-
         initSpielfeld();
+
     }
 
     public int getWidth(){
@@ -51,6 +63,27 @@ public class BoardView extends JFrame {
     public int getHeight(){
         return this.board_height;
     }
+
+
+    public void initAnzeige(int minenAnzahl){
+
+        //Panel für linke Anzeigeinhalt mit Flowlayout
+        left = new JPanel();
+        left.setLayout(new FlowLayout());
+
+        //Label und Textfield wird konfiguriert und in Panel eingefügt
+        minesLeftLabel = new JLabel("Minen übrig: ");
+        minesLeftField = new JTextField(minenAnzahl);
+        minesLeftField.setBackground(null);
+        minesLeftField.setHorizontalAlignment(JTextField.CENTER);
+        left.add(minesLeftLabel);
+        left.add(minesLeftField);
+
+        anzeige.add(left, BorderLayout.LINE_START);
+
+        contentPane.add(anzeige, BorderLayout.PAGE_START);
+    }
+
 
     public void initSpielfeld(){
 
@@ -63,6 +96,8 @@ public class BoardView extends JFrame {
                 spielfeld.add(spielfeldButtons[i][j]);
             }
         }
+
+        contentPane.add(spielfeld,BorderLayout.CENTER);
     }
 
     public void setButtonEnabled(int zahl1, int zahl2){
@@ -72,15 +107,21 @@ public class BoardView extends JFrame {
 
     //Flagge wird in der View gesetzt
     public void setFlag(int zahl1, int zahl2){
+
         spielfeldButtons[zahl1][zahl2].setText("F");
     }
 
+
     //Flagge wird in der View gelöscht
     public void deleteFlag(int zahl1, int zahl2){
+
         spielfeldButtons[zahl1][zahl2].setText("");
     }
 
+
     public void setPoints(int zahl1, int zahl2, int value){
-        spielfeldButtons[zahl1][zahl2].setText(String.valueOf(value));
+        if(value != 0){
+            spielfeldButtons[zahl1][zahl2].setText(String.valueOf(value));
+        }
     }
 }

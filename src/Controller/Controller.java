@@ -43,6 +43,7 @@ public class Controller implements ActionListener, MouseListener {
                 ex.printStackTrace();
             }
 
+            boardView.initAnzeige(8);
             startPointDrawing();
         }
     }
@@ -73,6 +74,7 @@ public class Controller implements ActionListener, MouseListener {
 
       //Bei einem Click auf die LINKE Maustaste -> Feld aufdecken
       if(SwingUtilities.isLeftMouseButton(e)){
+
           //Wenn auf dem Feld eine Bombe = Spiel verloren
           if(model.checkBomb(zahl1, zahl2) == true){
               gameLoseAction();
@@ -105,6 +107,7 @@ public class Controller implements ActionListener, MouseListener {
 
     }
 
+    //Methode prüft nach jedem Klick, welche Felder sichtbar sein müssten und disabled die Button und zeigt deren Punkte an
     public void startPointDrawing(){
         this.fieldmodel = model.getListWithPoints();
 

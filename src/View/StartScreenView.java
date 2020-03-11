@@ -56,6 +56,7 @@ public class StartScreenView extends JFrame {
         return this.startGame;
     }
 
+
     public void setVisible(boolean wert){
         if(wert == true){
             this.jfr.setVisible(true);

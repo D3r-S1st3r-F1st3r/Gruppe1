@@ -30,33 +30,20 @@ public class Model {
         }
     }
 
-    //setzt automatisch zufüllig Bomben im [][] Array
-    public void setBombs(){
-        int c = 0;
-        while (c < minenAnzahl){
-            for(int i = 0; i < fieldWidth; i++){
-                for(int j = 0; j< fieldHeight; j++){
-                    if(randomizer.nextInt(100) <= 5){
-                        if(!fieldModel[i][j].getBombActive()) {
-                            fieldModel[i][j].setBombActive();
-                            minesLeft++;
-                            fieldModel[i][j].setBombValue(50);
-                            c++;
-                        }
-                    }
-                }
-            }
-        }
 
-/*
-        for(int i = 0; i < minenAnzahl; i++){
+    //setzt automatisch zufüllig Bomben im [][] Array
+    public void setBombs() {
+        for (int i = 0; i < minenAnzahl; i++) {
 
             int zahl1 = randomizer.nextInt(16);
             int zahl2 = randomizer.nextInt(16);
-            if(!bombAktiv){
-            fieldModel[zahl1][zahl2].setBombActive();
-            fieldModel[zahl1][zahl2].setBombValue(50);
-        }*/
+
+            if (!fieldModel[zahl1][zahl2].getBombActive()) {
+                fieldModel[zahl1][zahl2].setBombActive();
+                System.out.println("activated: " + i);
+                fieldModel[zahl1][zahl2].setBombValue(50);
+            }
+        }
     }
 
     public void initPoints() throws Exception {
@@ -70,18 +57,17 @@ public class Model {
     //Werte werden gesetzt
     public void setValues(int i, int j) throws Exception {
 
-                for (int xAchse = i - 1; xAchse <= i + 1; xAchse++) {
-                    for (int yAchse = j - 1; yAchse <= j + 1; yAchse++) {
-                        try {if (fieldModel[xAchse][yAchse].getBombActive()) {
-                            fieldModel[i][j].setValue();
-                        }
-                        }
-                        catch (ArrayIndexOutOfBoundsException ao) {
-                            continue;
-
-                        }
-                    }
+        for (int xAchse = i - 1; xAchse <= i + 1; xAchse++) {
+            for (int yAchse = j - 1; yAchse <= j + 1; yAchse++) {
+                try {if (fieldModel[xAchse][yAchse].getBombActive()) {
+                    fieldModel[i][j].setValue();
                 }
+                }
+                catch (ArrayIndexOutOfBoundsException ao) {
+                    continue;
+                }
+            }
+        }
     }
 
 
