@@ -37,12 +37,13 @@ public class Model {
     //setzt automatisch zufüllig Bomben im [][] Array
     public void setBombs(){
         int c = 0;
-        while (c < minenAnzahl+1){
-            for(int i = 0; i< fieldWidth; i++){
+        while (c < minenAnzahl){
+            for(int i = 0; i < fieldWidth; i++){
                 for(int j = 0; j< fieldHeight; j++){
                     if(randomizer.nextInt(100) <= 5){
                         if(!fieldModel[i][j].getBombActive()) {
                             fieldModel[i][j].setBombActive();
+                            minesLeft++;
                             fieldModel[i][j].setBombValue(50);
                             c++;
                         }
@@ -123,21 +124,21 @@ public class Model {
 
     public void checkNeighborhood(int y, int x){
 
+        System.out.println(minesLeft);
+
         if(fieldModel[y][x].getValue() == 0){
 
             for(int i = y-1; i <= y+1; i++){
                 for(int j = x-1; j <= x+1; j++){
 
                     try {
-                        if (fieldModel[i][j].getValue() == 0 && fieldModel[i][j].getShownStatus() == false) {
+                        if (fieldModel[i][j].getShownStatus() == false) {
+
                             fieldModel[i][j].setShownActive();
 
-                            for(int eins = i-1; eins <= i+1; eins++){
-                                for(int zwei = j-1; zwei <= j+1; zwei++){
-                                    fieldModel[eins][zwei].setShownActive();
-                                }
+                            if(fieldModel[i][j].getValue() == 0){
+                                checkNeighborhood(i,j);
                             }
-                            checkNeighborhood(i, j);
                         }
                     }catch (ArrayIndexOutOfBoundsException ao){
 

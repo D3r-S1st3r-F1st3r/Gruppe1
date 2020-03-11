@@ -86,7 +86,6 @@ public class Controller implements ActionListener, MouseListener {
 
               //Punkteanzahl vom aufgedeckten Feld anzeigen
               startPointDrawing();
-              boardView.setButtonEnabled(zahl1, zahl2);
           }
       }
     }
@@ -113,6 +112,7 @@ public class Controller implements ActionListener, MouseListener {
             for(int j = 0; j <fieldmodel[i].length; j++){
                 if(fieldmodel[i][j].getShownStatus()==true){
                     boardView.setPoints(i, j, fieldmodel[i][j].getValue());
+                    boardView.setButtonEnabled(i, j);
                 }
             }
         }
