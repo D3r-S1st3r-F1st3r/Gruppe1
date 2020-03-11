@@ -2,7 +2,6 @@ package View;
 
 import Controller.Controller;
 
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.*;
 import java.awt.*;
 

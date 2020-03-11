@@ -1,14 +1,10 @@
 package Model;
 
 import View.BoardView;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Model {
 
-    BoardView boardView;
     FieldModel[][] fieldModel = new FieldModel[16][16];
 
     //random generator
@@ -118,26 +114,29 @@ public class Model {
         return fieldModel[i][j].getFlag();
     }
 
+    //Array mit allen Buttons werden gegebenen
     public FieldModel[][] getListWithPoints(){
         return this.fieldModel;
     }
 
+    //Nachbarn werden geprüft. -> Wenn Zahl am Rand wird sie aufgedeckt, wenn 0 -> wird weitergesucht
     public void checkNeighborhood(int y, int x){
 
-        System.out.println(minesLeft);
-
+        //Wenn Feld = 0, wird if ausgeführt
         if(fieldModel[y][x].getValue() == 0){
 
+            //Durch Nachbarfelder wird durch 2 For Schleifen iteriert
             for(int i = y-1; i <= y+1; i++){
                 for(int j = x-1; j <= x+1; j++){
 
+                    //durch try wird bei -1 in der x und y Achse ein Fehlerauswurf verhindert
                     try {
                         if (fieldModel[i][j].getShownStatus() == false) {
 
-                            fieldModel[i][j].setShownActive();
+                            fieldModel[i][j].setShownActive();      //durch == false wird verhindert, dass Felder doppelt aktiviert werden
 
                             if(fieldModel[i][j].getValue() == 0){
-                                checkNeighborhood(i,j);
+                                checkNeighborhood(i,j);             //Wenn das aufgedeckte Feld eine 0 ist, wird der Vorgang von neu gestartet
                             }
                         }
                     }catch (ArrayIndexOutOfBoundsException ao){
