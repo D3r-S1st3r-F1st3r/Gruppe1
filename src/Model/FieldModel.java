@@ -18,6 +18,10 @@ public class FieldModel {
         this.shown = true;
     }
 
+    public boolean getShownStatus(){
+        return this.shown;
+    }
+
     public void setBombActive(){
 
         this.bomb = true;
@@ -33,8 +37,11 @@ public class FieldModel {
     }
 
     public void setValue(){
-
         this.value++;
+    }
+
+    public void setBombValue(int value){
+        this.value += value;
     }
 
     public int getValue(){

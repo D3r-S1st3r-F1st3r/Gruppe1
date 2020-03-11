@@ -67,6 +67,7 @@ public class BoardView extends JFrame {
 
     public void setButtonEnabled(int zahl1, int zahl2){
         spielfeldButtons[zahl1][zahl2].setEnabled(false);
+
     }
 
     //Flagge wird in der View gesetzt
@@ -80,6 +81,6 @@ public class BoardView extends JFrame {
     }
 
     public void setPoints(int zahl1, int zahl2, int value){
-
+        spielfeldButtons[zahl1][zahl2].setText(String.valueOf(value));
     }
 }
