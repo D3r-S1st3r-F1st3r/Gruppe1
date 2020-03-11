@@ -35,6 +35,11 @@ public class Controller implements ActionListener, MouseListener {
             //Bomben werden im Model gesetzt
             model.setBombs();
 
+            try {
+                model.initPoints();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
@@ -68,6 +73,7 @@ public class Controller implements ActionListener, MouseListener {
           if(model.checkBomb(zahl1, zahl2) == true){
               gameLoseAction();
           }else{
+              System.out.println(zahl1+ "-" +zahl2);
               boardView.setButtonEnabled(zahl1, zahl2);
           }
       }

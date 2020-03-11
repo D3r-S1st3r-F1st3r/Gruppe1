@@ -18,7 +18,7 @@ public class Model {
     private int flagCount;
 
     //Anzahl der Minen
-    private int minenAnzahl = 25;
+    private int minenAnzahl = 100;
 
     public void initFields(){
         for(int i = 0; i < 16; i++){
@@ -32,25 +32,38 @@ public class Model {
     public void setBombs(){
 
         for(int i = 0; i < minenAnzahl; i++){
-            int zahl1 = randomizer.nextInt(15);
-            int zahl2 = randomizer.nextInt(15);
+            int zahl1 = randomizer.nextInt(16);
+            int zahl2 = randomizer.nextInt(16);
 
             fieldModel[zahl1][zahl2].setBombActive();
+
+        }
+    }
+
+    public void initPoints() throws Exception {
+        for(int i = 0; i < 16; i++){
+            for(int j = 0; j < 16; j++){
+                setValues(i,j);
+            }
         }
     }
 
     //Werte werden gesetzt
-    public void setValues(int i, int j){
-        fieldModel[i+1][j].setValue();
-        fieldModel[i+1][j+1].setValue();
-        fieldModel[i][j+1].setValue();
-        fieldModel[i+1][j-1].setValue();
-        fieldModel[i][j-1].setValue();
-        fieldModel[i-1][j-1].setValue();
-        fieldModel[i-1][j].setValue();
-        fieldModel[i-1][j+1].setValue();
+    public void setValues(int i, int j) throws Exception{
 
+        try{
+            for(int xAchse = i - 1; xAchse <= i + 1; xAchse++){
+                for(int yAchse = j - 1; yAchse <= j+1; yAchse++){
+                    if(fieldModel[xAchse][yAchse].getBombActive() == true){
+                        fieldModel[i][j].setValue();
+                    }
+                }
+            }
+        }   catch (ArrayIndexOutOfBoundsException ao){
+
+            }
     }
+
 
     public boolean checkBomb(int i, int j){
         if(fieldModel[i][j].getBombActive() == true){
@@ -78,5 +91,9 @@ public class Model {
 
     public boolean getFlagStatus(int i, int j){
         return fieldModel[i][j].getFlag();
+    }
+
+    public void getPointsToDraw(){
+
     }
 }
