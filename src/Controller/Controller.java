@@ -43,7 +43,7 @@ public class Controller implements ActionListener, MouseListener {
                 ex.printStackTrace();
             }
 
-            boardView.initAnzeige(8);
+
             startPointDrawing();
         }
     }
@@ -79,9 +79,8 @@ public class Controller implements ActionListener, MouseListener {
           if(model.checkBomb(zahl1, zahl2) == true){
               gameLoseAction();
           }else{
-              System.out.println(zahl1+ "-" +zahl2);
 
-              //Button wird angezeigt im Model merken
+              //"Button wird angezeigt" im Model merken
               fieldmodel[zahl1][zahl2].setShownActive();
 
               model.checkNeighborhood(zahl1,zahl2);
@@ -89,6 +88,7 @@ public class Controller implements ActionListener, MouseListener {
               //Punkteanzahl vom aufgedeckten Feld anzeigen
               startPointDrawing();
           }
+          boardView.initAnzeige(model.getMinesLeft(), model.getScore());
       }
     }
 
@@ -114,6 +114,7 @@ public class Controller implements ActionListener, MouseListener {
         for(int i = 0; i < fieldmodel.length; i++){
             for(int j = 0; j <fieldmodel[i].length; j++){
                 if(fieldmodel[i][j].getShownStatus()==true){
+                    model.addPoints(i,j);
                     boardView.setPoints(i, j, fieldmodel[i][j].getValue());
                     boardView.setButtonEnabled(i, j);
                 }

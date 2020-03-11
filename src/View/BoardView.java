@@ -17,10 +17,12 @@ public class BoardView extends JFrame {
 
     //Anzeige
     private JPanel anzeige;
-    private JLabel minesLeftLabel;
+    private JLabel minesLeftLabel;      //left
     private JTextField minesLeftField;
     private JPanel left;
     private JPanel center;
+    private JLabel pointsCollectedLabel;    //right
+    private JTextField pointsCollectedField;
     private JPanel right;
 
     private JButton[][] spielfeldButtons = new JButton[16][16];
@@ -65,21 +67,37 @@ public class BoardView extends JFrame {
     }
 
 
-    public void initAnzeige(int minenAnzahl){
+    public void initAnzeige(int minenAnzahl, int punkteanzahl){
 
         //Panel für linke Anzeigeinhalt mit Flowlayout
         left = new JPanel();
         left.setLayout(new FlowLayout());
 
         //Label und Textfield wird konfiguriert und in Panel eingefügt
-        minesLeftLabel = new JLabel("Minen übrig: ");
-        minesLeftField = new JTextField(minenAnzahl);
+        minesLeftLabel = new JLabel("Minenanzahl: ");
+        minesLeftField = new JTextField(3);
+        minesLeftField.setText(String.valueOf(minenAnzahl));
         minesLeftField.setBackground(null);
         minesLeftField.setHorizontalAlignment(JTextField.CENTER);
         left.add(minesLeftLabel);
         left.add(minesLeftField);
 
+        right = new JPanel();
+        right.setLayout(new FlowLayout());
+
+        //Label und Textfield wird konfiguriert und in Panel eingefügt
+        pointsCollectedLabel = new JLabel("Punkte: ");
+        pointsCollectedField = new JTextField(5);
+        pointsCollectedField.setText(String.valueOf(punkteanzahl));
+        pointsCollectedField.setHorizontalAlignment(JTextField.CENTER);
+        pointsCollectedField.setBackground(null);
+        pointsCollectedField.setForeground(Color.RED);
+        right.add(pointsCollectedLabel);
+        right.add(pointsCollectedField);
+
+
         anzeige.add(left, BorderLayout.LINE_START);
+        anzeige.add(right, BorderLayout.LINE_END);
 
         contentPane.add(anzeige, BorderLayout.PAGE_START);
     }

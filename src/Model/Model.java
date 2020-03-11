@@ -13,14 +13,16 @@ public class Model {
     //window size
     private int fieldWidth = 16;
     private int fieldHeight = 16;
+    private int score = 0;
 
 
     //different counter
-    private int minesLeft;
     private int flagCount;
 
     //Anzahl der Minen
     private int minenAnzahl = 25;
+
+    private int pointsCollector = 0;
 
     public void initFields(){
         for(int i = 0; i < fieldWidth; i++){
@@ -40,8 +42,9 @@ public class Model {
 
             if (!fieldModel[zahl1][zahl2].getBombActive()) {
                 fieldModel[zahl1][zahl2].setBombActive();
-                System.out.println("activated: " + i);
                 fieldModel[zahl1][zahl2].setBombValue(50);
+            }else{
+                i--;
             }
         }
     }
@@ -110,7 +113,7 @@ public class Model {
 
         //Wenn Feld = 0, wird if ausgeführt
         if(fieldModel[y][x].getValue() == 0){
-
+            score++;
             //Durch Nachbarfelder wird durch 2 For Schleifen iteriert
             for(int i = y-1; i <= y+1; i++){
                 for(int j = x-1; j <= x+1; j++){
@@ -131,5 +134,27 @@ public class Model {
                 }
             }
         }
+        else if(fieldModel[y][x].getValue() != 0 &&fieldModel[y][x].getShownStatus()){
+            fieldModel[y][x].setShownActive();
+            score++;
+        }
     }
+
+    public int getMinesLeft(){
+        return this.minenAnzahl;
+    }
+
+    public int getPointsCollector(){
+        return this.pointsCollector;
+    }
+
+    public void addPoints(int i, int j){
+        this.pointsCollector += fieldModel[i][j].getValue();
+    }
+    public int getScore(){
+        return this.score;
+    }
+
+    //Methode zur Felder Show Aktivierung noch erstellen
+    public
 }
