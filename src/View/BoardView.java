@@ -79,4 +79,7 @@ public class BoardView extends JFrame {
         spielfeldButtons[zahl1][zahl2].setText("");
     }
 
+    public void setPoints(int zahl1, int zahl2, int value){
+
+    }
 }

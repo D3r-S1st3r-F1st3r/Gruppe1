@@ -4,6 +4,7 @@ import Model.Model;
 import View.BoardView;
 import View.ButtonView;
 import View.StartScreenView;
+import Model.FieldModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ public class Controller implements ActionListener, MouseListener {
     private StartScreenView startscreenview;
     private BoardView boardView;
     private Model model;
+    private FieldModel[][] fieldmodel = new FieldModel[16][16];
 
     public Controller(){
         this.startscreenview = new StartScreenView(this);
@@ -34,6 +36,8 @@ public class Controller implements ActionListener, MouseListener {
 
             //Bomben werden im Model gesetzt
             model.setBombs();
+
+            startPointDrawing();
 
             try {
                 model.initPoints();
@@ -94,6 +98,15 @@ public class Controller implements ActionListener, MouseListener {
 
     }
 
+    public void startPointDrawing(){
+        this.fieldmodel = model.getListWithPoints();
+
+        for(int i = 0; i < fieldmodel.length; i++){
+            for(int j = 0; j <fieldmodel[i].length; j++){
+                boardView.setPoints(i, j, fieldmodel[i][j].getValue());
+            }
+        }
+    }
 
     public void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");

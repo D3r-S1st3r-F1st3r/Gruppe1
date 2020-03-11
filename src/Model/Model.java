@@ -18,7 +18,7 @@ public class Model {
     private int flagCount;
 
     //Anzahl der Minen
-    private int minenAnzahl = 100;
+    private int minenAnzahl = 25;
 
     public void initFields(){
         for(int i = 0; i < 16; i++){
@@ -93,7 +93,7 @@ public class Model {
         return fieldModel[i][j].getFlag();
     }
 
-    public void getPointsToDraw(){
-
+    public FieldModel[][] getListWithPoints(){
+        return this.fieldModel;
     }
 }

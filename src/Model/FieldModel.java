@@ -37,6 +37,9 @@ public class FieldModel {
         this.value++;
     }
 
+    public int getValue(){
+        return this.value;
+    }
 
     public boolean getBombActive(){
 
