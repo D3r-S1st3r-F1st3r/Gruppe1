@@ -82,6 +82,8 @@ public class Controller implements ActionListener, MouseListener {
               //Button wird angezeigt im Model merken
               fieldmodel[zahl1][zahl2].setShownActive();
 
+              model.checkNeighborhood(zahl1,zahl2);
+
               //Punkteanzahl vom aufgedeckten Feld anzeigen
               startPointDrawing();
               boardView.setButtonEnabled(zahl1, zahl2);

@@ -2,6 +2,7 @@ package Model;
 
 import View.BoardView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -13,6 +14,11 @@ public class Model {
     //random generator
     Random randomizer = new Random();
 
+    //window size
+    private int fieldWidth = 16;
+    private int fieldHeight = 16;
+
+
     //different counter
     private int minesLeft;
     private int flagCount;
@@ -21,8 +27,8 @@ public class Model {
     private int minenAnzahl = 25;
 
     public void initFields(){
-        for(int i = 0; i < 16; i++){
-            for (int j = 0; j < 16; j++){
+        for(int i = 0; i < fieldWidth; i++){
+            for (int j = 0; j < fieldHeight; j++){
                 fieldModel[i][j] = new FieldModel();
             }
         }
@@ -32,8 +38,8 @@ public class Model {
     public void setBombs(){
         int c = 0;
         while (c < minenAnzahl+1){
-            for(int i = 0; i< 16; i++){
-                for(int j = 0; j< 16; j++){
+            for(int i = 0; i< fieldWidth; i++){
+                for(int j = 0; j< fieldHeight; j++){
                     if(randomizer.nextInt(100) <= 5){
                         if(!fieldModel[i][j].getBombActive()) {
                             fieldModel[i][j].setBombActive();
@@ -115,27 +121,29 @@ public class Model {
         return this.fieldModel;
     }
 
-    public void checkHood(int y, int x){
+    public void checkNeighborhood(int y, int x){
 
-        for (int yAchse = y - 1; yAchse <= y + 1; yAchse++) {
-            for (int xAchse = x - 1; xAchse <= x + 1; xAchse++) {
-                try {
-                    if (fieldModel[y][x].getValue() == 0) {
+        if(fieldModel[y][x].getValue() == 0){
 
-                        if (fieldModel[yAchse][xAchse].getValue() == 0) {
-                            setDisabledButton(yAchse, xAchse);
+            for(int i = y-1; i <= y+1; i++){
+                for(int j = x-1; j <= x+1; j++){
+
+                    try {
+                        if (fieldModel[i][j].getValue() == 0 && fieldModel[i][j].getShownStatus() == false) {
+                            fieldModel[i][j].setShownActive();
+
+                            for(int eins = i-1; eins <= i+1; eins++){
+                                for(int zwei = j-1; zwei <= j+1; zwei++){
+                                    fieldModel[eins][zwei].setShownActive();
+                                }
+                            }
+                            checkNeighborhood(i, j);
                         }
+                    }catch (ArrayIndexOutOfBoundsException ao){
+
                     }
                 }
-                catch (ArrayIndexOutOfBoundsException ao) {
-                    continue;
-
-                }
             }
-        }
-
-        if(fieldModel[y][x].getValue()==0){
-
         }
     }
 }
