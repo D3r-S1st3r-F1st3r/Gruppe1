@@ -8,7 +8,7 @@ import java.util.Random;
 public class Model {
 
     BoardView boardView;
-    FieldModel[][] fieldModel = new FieldModel[15][15];
+    FieldModel[][] fieldModel = new FieldModel[16][16];
 
     //random generator
     Random randomizer = new Random();
@@ -21,8 +21,8 @@ public class Model {
     private int minenAnzahl = 25;
 
     public void initFields(){
-        for(int i = 0; i < 15; i++){
-            for (int j = 0; j < 15; j++){
+        for(int i = 0; i < 16; i++){
+            for (int j = 0; j < 16; j++){
                 fieldModel[i][j] = new FieldModel();
             }
         }
@@ -37,6 +37,19 @@ public class Model {
 
             fieldModel[zahl1][zahl2].setBombActive();
         }
+    }
+
+    //Werte werden gesetzt
+    public void setValues(int i, int j){
+        fieldModel[i+1][j].setValue();
+        fieldModel[i+1][j+1].setValue();
+        fieldModel[i][j+1].setValue();
+        fieldModel[i+1][j-1].setValue();
+        fieldModel[i][j-1].setValue();
+        fieldModel[i-1][j-1].setValue();
+        fieldModel[i-1][j].setValue();
+        fieldModel[i-1][j+1].setValue();
+
     }
 
     public boolean checkBomb(int i, int j){
@@ -66,5 +79,4 @@ public class Model {
     public boolean getFlagStatus(int i, int j){
         return fieldModel[i][j].getFlag();
     }
-
 }

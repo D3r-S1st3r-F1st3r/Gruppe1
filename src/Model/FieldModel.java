@@ -32,9 +32,9 @@ public class FieldModel {
         return this.flag;
     }
 
-    public void setValue(int value){
+    public void setValue(){
 
-        this.value = value;
+        this.value++;
     }
 
 
