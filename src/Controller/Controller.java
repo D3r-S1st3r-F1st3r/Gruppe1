@@ -125,5 +125,10 @@ public class Controller implements ActionListener, MouseListener {
 
     public void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
+
+        for(int i = 0; i < model.getMinesLeft(); i++){
+
+        }
+
     }
 }
