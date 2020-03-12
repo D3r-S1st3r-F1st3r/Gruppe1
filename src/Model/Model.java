@@ -20,9 +20,11 @@ public class Model {
     private int flagCount;
 
     //Anzahl der Minen
-    private int minenAnzahl = 25;
+    private int minenAnzahl;
 
-    private int pointsCollector = 0;
+    public void setMinenAnzahl(int anzahl){
+        this.minenAnzahl = anzahl;
+    }
 
     public void initFields(){
         for(int i = 0; i < fieldWidth; i++){
@@ -113,7 +115,6 @@ public class Model {
 
         //Wenn Feld = 0, wird if ausgeführt
         if(fieldModel[y][x].getValue() == 0){
-            score++;
             //Durch Nachbarfelder wird durch 2 For Schleifen iteriert
             for(int i = y-1; i <= y+1; i++){
                 for(int j = x-1; j <= x+1; j++){
@@ -122,7 +123,7 @@ public class Model {
                     try {
                         if (fieldModel[i][j].getShownStatus() == false) {
 
-                            fieldModel[i][j].setShownActive();      //durch == false wird verhindert, dass Felder doppelt aktiviert werden
+                            fieldModel[i][j].setShownActive();      //Punktescorer + setVisible Funktion
 
                             if(fieldModel[i][j].getValue() == 0){
                                 checkNeighborhood(i,j);             //Wenn das aufgedeckte Feld eine 0 ist, wird der Vorgang von neu gestartet
@@ -135,8 +136,7 @@ public class Model {
             }
         }
         else if(fieldModel[y][x].getValue() != 0 &&fieldModel[y][x].getShownStatus()){
-            fieldModel[y][x].setShownActive();
-            score++;
+
         }
     }
 
@@ -144,17 +144,23 @@ public class Model {
         return this.minenAnzahl;
     }
 
-    public int getPointsCollector(){
-        return this.pointsCollector;
-    }
-
-    public void addPoints(int i, int j){
-        this.pointsCollector += fieldModel[i][j].getValue();
-    }
     public int getScore(){
         return this.score;
     }
 
-    //Methode zur Felder Show Aktivierung noch erstellen
-    public
+    public int checkPoints(){
+        int output = 0;
+
+        for(int i = 0; i < fieldModel.length;i++){
+            for(int j = 0; j <fieldModel[i].length;j++){
+
+                if(fieldModel[i][j].getShownStatus() == true){
+                    output = output + fieldModel[i][j].getValue();
+                }
+
+            }
+        }
+        return output;
+
+    }
 }

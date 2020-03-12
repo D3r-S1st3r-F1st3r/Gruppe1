@@ -3,12 +3,13 @@ package View;
 import Controller.Controller;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class BoardView extends JFrame {
 
     Controller controller;
+
+    private int score;
 
     //Komponenten
     private JFrame jfr;             //Basisfenster
@@ -78,6 +79,7 @@ public class BoardView extends JFrame {
         minesLeftField = new JTextField(3);
         minesLeftField.setText(String.valueOf(minenAnzahl));
         minesLeftField.setBackground(null);
+        minesLeftField.setEditable(false);
         minesLeftField.setHorizontalAlignment(JTextField.CENTER);
         left.add(minesLeftLabel);
         left.add(minesLeftField);
@@ -91,6 +93,7 @@ public class BoardView extends JFrame {
         pointsCollectedField.setText(String.valueOf(punkteanzahl));
         pointsCollectedField.setHorizontalAlignment(JTextField.CENTER);
         pointsCollectedField.setBackground(null);
+        pointsCollectedField.setEditable(false);
         pointsCollectedField.setForeground(Color.RED);
         right.add(pointsCollectedLabel);
         right.add(pointsCollectedField);
@@ -134,6 +137,12 @@ public class BoardView extends JFrame {
     public void deleteFlag(int zahl1, int zahl2){
 
         spielfeldButtons[zahl1][zahl2].setText("");
+    }
+
+    public void showBombs(int zahl1, int zahl2){
+
+        spielfeldButtons[zahl1][zahl2].setText("B");
+
     }
 
 

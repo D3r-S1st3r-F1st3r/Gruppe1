@@ -28,6 +28,8 @@ public class Controller implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == startscreenview.getStartButton()){
+            model.setMinenAnzahl(startscreenview.setDifficulty());
+
             startscreenview.setVisible(false);
             boardView.initGui();
 
@@ -43,7 +45,7 @@ public class Controller implements ActionListener, MouseListener {
                 ex.printStackTrace();
             }
 
-
+            boardView.initAnzeige(model.getMinesLeft(), model.checkPoints());
             startPointDrawing();
         }
     }
@@ -88,7 +90,7 @@ public class Controller implements ActionListener, MouseListener {
               //Punkteanzahl vom aufgedeckten Feld anzeigen
               startPointDrawing();
           }
-          boardView.initAnzeige(model.getMinesLeft(), model.getScore());
+          boardView.initAnzeige(model.getMinesLeft(), model.checkPoints());
       }
     }
 
@@ -114,7 +116,6 @@ public class Controller implements ActionListener, MouseListener {
         for(int i = 0; i < fieldmodel.length; i++){
             for(int j = 0; j <fieldmodel[i].length; j++){
                 if(fieldmodel[i][j].getShownStatus()==true){
-                    model.addPoints(i,j);
                     boardView.setPoints(i, j, fieldmodel[i][j].getValue());
                     boardView.setButtonEnabled(i, j);
                 }
