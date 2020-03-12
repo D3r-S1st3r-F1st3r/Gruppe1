@@ -20,6 +20,7 @@ public class FieldModel {
 
     public void setShownActive(){
         this.shown = true;
+        this.flag = false;
     }
 
     public boolean getShownStatus(){

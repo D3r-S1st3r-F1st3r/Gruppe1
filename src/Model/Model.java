@@ -144,10 +144,6 @@ public class Model {
         return this.minenAnzahl;
     }
 
-    public int getScore(){
-        return this.score;
-    }
-
     public int checkPoints(){
         int output = 0;
 

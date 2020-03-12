@@ -65,10 +65,11 @@ public class Controller implements ActionListener, MouseListener {
 
       //Bei einem Click auf die RECHTE Maustaste -> Flagge platzieren
       if(SwingUtilities.isRightMouseButton(e)){
-          if(model.getFlagStatus(zahl1, zahl2) == false){
+
+          if(model.getFlagStatus(zahl1, zahl2) == false && fieldmodel[zahl1][zahl2].getShownStatus() == false){
               boardView.setFlag(zahl1, zahl2);
               model.setFlag(zahl1,zahl2);
-          }else{
+          }else if (model.getFlagStatus(zahl1, zahl2) == true && fieldmodel[zahl1][zahl2].getShownStatus() == false){
               model.setFlag(zahl1,zahl2);
               boardView.deleteFlag(zahl1,zahl2);
           }
@@ -84,6 +85,7 @@ public class Controller implements ActionListener, MouseListener {
 
               //"Button wird angezeigt" im Model merken
               fieldmodel[zahl1][zahl2].setShownActive();
+              boardView.deleteFlag(zahl1,zahl2);
 
               model.checkNeighborhood(zahl1,zahl2);
 
@@ -126,8 +128,13 @@ public class Controller implements ActionListener, MouseListener {
     public void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
 
-        for(int i = 0; i < model.getMinesLeft(); i++){
+        for(int i = 0; i < fieldmodel.length; i++){
+            for(int j = 0; j < fieldmodel[i].length; j++){
+                if(fieldmodel[i][j].getBombActive()){
 
+
+                }
+            }
         }
 
     }
