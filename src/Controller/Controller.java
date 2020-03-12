@@ -131,8 +131,7 @@ public class Controller implements ActionListener, MouseListener {
         for(int i = 0; i < fieldmodel.length; i++){
             for(int j = 0; j < fieldmodel[i].length; j++){
                 if(fieldmodel[i][j].getBombActive()){
-
-
+                    boardView.showBombs(i,j);
                 }
             }
         }
