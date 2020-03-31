@@ -66,10 +66,10 @@ public class Controller implements ActionListener, MouseListener {
       //Bei einem Click auf die RECHTE Maustaste -> Flagge platzieren
       if(SwingUtilities.isRightMouseButton(e)){
 
-          if(model.getFlagStatus(zahl1, zahl2) == false && fieldmodel[zahl1][zahl2].getShownStatus() == false){
+          if(model.getFlagStatus(zahl1, zahl2) == false && fieldmodel[zahl1][zahl2].getShownStatus() == false && boardView.getSpielFeldButtonsBombeAufgedeckt(zahl1,zahl2) == false){
               boardView.setFlag(zahl1, zahl2);
               model.setFlag(zahl1,zahl2);
-          }else if (model.getFlagStatus(zahl1, zahl2) == true && fieldmodel[zahl1][zahl2].getShownStatus() == false){
+          }else if (model.getFlagStatus(zahl1, zahl2) == true && fieldmodel[zahl1][zahl2].getShownStatus() == false && boardView.getSpielFeldButtonsBombeAufgedeckt(zahl1,zahl2) == false){
               model.setFlag(zahl1,zahl2);
               boardView.deleteFlag(zahl1,zahl2);
           }

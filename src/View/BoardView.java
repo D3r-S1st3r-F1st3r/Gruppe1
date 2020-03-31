@@ -68,6 +68,7 @@ public class BoardView extends JFrame {
     }
 
 
+    //Anzeige mit restlichen Minen usw wird mit Layout usw initialisiert
     public void initAnzeige(int minenAnzahl, int punkteanzahl){
 
         //Panel für linke Anzeigeinhalt mit Flowlayout
@@ -106,6 +107,7 @@ public class BoardView extends JFrame {
     }
 
 
+    //Spielfeld wird mit Buttons initialisiert und MouseListener wird an jeden Button gehängt -> Buttons werden im Anschluss zum Spielfeld hinzugefügt
     public void initSpielfeld(){
 
         for(int i = 0; i < 16; i++){
@@ -123,7 +125,6 @@ public class BoardView extends JFrame {
 
     public void setButtonEnabled(int zahl1, int zahl2){
         spielfeldButtons[zahl1][zahl2].setEnabled(false);
-
     }
 
     //Flagge wird in der View gesetzt
@@ -139,13 +140,24 @@ public class BoardView extends JFrame {
         spielfeldButtons[zahl1][zahl2].setText("");
     }
 
+
+    //Bombe wird im View markiert
     public void showBombs(int zahl1, int zahl2){
 
         spielfeldButtons[zahl1][zahl2].setText("B");
 
     }
 
+    public boolean getSpielFeldButtonsBombeAufgedeckt(int zahl1, int zahl2){
+        String output = spielfeldButtons[zahl1][zahl2].getText();
+        if(output.equals("B")){
+            return true;
+        }
 
+        return false;
+    }
+
+    //Wenn Button größer 0 = Wert des Buttons anzeigen
     public void setPoints(int zahl1, int zahl2, int value){
         if(value != 0){
             spielfeldButtons[zahl1][zahl2].setText(String.valueOf(value));
