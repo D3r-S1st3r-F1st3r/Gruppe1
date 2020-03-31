@@ -115,7 +115,7 @@ public class Controller implements ActionListener, MouseListener {
     }
 
     //Methode prüft nach jedem Klick, welche Felder sichtbar sein müssten und disabled die Button und zeigt deren Punkte an
-    public void startPointDrawing(){
+    private void startPointDrawing(){
         this.fieldmodel = model.getListWithPoints();
 
         for(int i = 0; i < fieldmodel.length; i++){
@@ -128,7 +128,7 @@ public class Controller implements ActionListener, MouseListener {
         }
     }
 
-    public void gameLoseAction(){
+    private void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
         spielstatus = false;
 
@@ -139,6 +139,7 @@ public class Controller implements ActionListener, MouseListener {
                 }
             }
         }
-
     }
+
+
 }
