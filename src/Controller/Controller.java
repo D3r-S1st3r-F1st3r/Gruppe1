@@ -18,6 +18,7 @@ public class Controller implements ActionListener, MouseListener {
     private BoardView boardView;
     private Model model;
     private FieldModel[][] fieldmodel = new FieldModel[16][16];
+    private boolean spielstatus = true;
 
     public Controller(){
         this.startscreenview = new StartScreenView(this);
@@ -76,23 +77,25 @@ public class Controller implements ActionListener, MouseListener {
       }
 
       //Bei einem Click auf die LINKE Maustaste -> Feld aufdecken
-      if(SwingUtilities.isLeftMouseButton(e)){
+      if(SwingUtilities.isLeftMouseButton(e)) {
 
-          //Wenn auf dem Feld eine Bombe = Spiel verloren
-          if(model.checkBomb(zahl1, zahl2) == true){
-              gameLoseAction();
-          }else{
+          if (spielstatus == true) {
+              //Wenn auf dem Feld eine Bombe = Spiel verloren
+              if (model.checkBomb(zahl1, zahl2) == true) {
+                  gameLoseAction();
+              } else {
 
-              //"Button wird angezeigt" im Model merken
-              fieldmodel[zahl1][zahl2].setShownActive();
-              boardView.deleteFlag(zahl1,zahl2);
+                  //"Button wird angezeigt" im Model merken
+                  fieldmodel[zahl1][zahl2].setShownActive();
+                  boardView.deleteFlag(zahl1, zahl2);
 
-              model.checkNeighborhood(zahl1,zahl2);
+                  model.checkNeighborhood(zahl1, zahl2);
 
-              //Punkteanzahl vom aufgedeckten Feld anzeigen
-              startPointDrawing();
+                  //Punkteanzahl vom aufgedeckten Feld anzeigen
+                  startPointDrawing();
+              }
+              boardView.initAnzeige(model.getMinesLeft(), model.checkPoints());
           }
-          boardView.initAnzeige(model.getMinesLeft(), model.checkPoints());
       }
     }
 
@@ -127,6 +130,7 @@ public class Controller implements ActionListener, MouseListener {
 
     public void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
+        spielstatus = false;
 
         for(int i = 0; i < fieldmodel.length; i++){
             for(int j = 0; j < fieldmodel[i].length; j++){
