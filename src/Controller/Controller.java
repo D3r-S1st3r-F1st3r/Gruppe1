@@ -82,6 +82,7 @@ public class Controller implements ActionListener, MouseListener {
       if(SwingUtilities.isLeftMouseButton(e)) {
 
           if (spielstatus == true) {
+
               //Wenn auf dem Feld eine Bombe = Spiel verloren
               if (model.checkBomb(zahl1, zahl2) == true) {
                   gameLoseAction();
