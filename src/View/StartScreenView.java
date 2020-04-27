@@ -92,6 +92,7 @@ public class StartScreenView extends JFrame {
     }
 
 
+    //Schwierigkeit wird festgelegt
     public int setDifficulty(){
 
         int output;
@@ -110,6 +111,7 @@ public class StartScreenView extends JFrame {
         return output;
     }
 
+    //Fenster wird sichtbar/unsichtbar gemacht
     public void setVisible(boolean wert){
         if(wert == true){
             this.jfr.setVisible(true);
