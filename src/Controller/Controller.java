@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+//ausschließlich ActionListen u. MouseListener implementiert
 public class Controller implements ActionListener, MouseListener {
 
     private StartScreenView startscreenview;
@@ -20,6 +21,7 @@ public class Controller implements ActionListener, MouseListener {
     private FieldModel[][] fieldmodel = new FieldModel[16][16];
     private boolean spielstatus = true;
 
+    //Konstruktor [ (this) = ActionListener wird weiter gegeben)
     public Controller(){
         this.startscreenview = new StartScreenView(this);
         this.boardView = new BoardView(this);
@@ -31,6 +33,7 @@ public class Controller implements ActionListener, MouseListener {
         if(e.getSource() == startscreenview.getStartButton()){
             model.setMinenAnzahl(startscreenview.setDifficulty());
 
+            //Startscreen verschwindet und Hauptfenster wird gestartet
             startscreenview.setVisible(false);
             boardView.initGui();
 
@@ -131,6 +134,7 @@ public class Controller implements ActionListener, MouseListener {
         }
     }
 
+    //Aktion bei verlorenem Spiel = muss noch ausgebaut werden
     private void gameLoseAction(){
         System.out.println("BÄÄÄÄÄÄÄÄÄÄÄÄHM VERLOREN");
         spielstatus = false;
